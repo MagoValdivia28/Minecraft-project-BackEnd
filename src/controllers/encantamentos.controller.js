@@ -1,5 +1,6 @@
 import { Encantamento } from '../models/encantamentos/encantamento.js';
 import { ListaEncantamentos } from '../models/encantamentos/listaEncantamento.js';
+import { verificacoesEncantamento } from '../components/verifications.js';
 
 // ENCANTAMENTOS
 
@@ -32,32 +33,17 @@ export const getEncantamentoById = (req, res) => {
 export const createEncantamento = (req, res) => {
     const errors = [];
 
+    // Lower Case
+
+    req.body.titulo = req.body.titulo.toLowerCase();
+    req.body.descricao = req.body.descricao.toLowerCase();
+    req.body.tipoEncanto = req.body.tipoEncanto.toLowerCase();
+
     const { titulo, descricao, tipoEncanto, dano, defesa, nivel } = req.body;
 
-    if (!titulo) {
-        errors.push("Título não informado");
-    }
-    if (!descricao) {
-        errors.push("Descrição não informada");
-    }
-    if (!tipoEncanto) {
-        errors.push("Tipo de encanto não informado");
-    }
-    if(!dano && !defesa) {
-        errors.push("O valor do dano ou da defesa tem que ser informado");
-    }
-    if (!nivel) {
-        errors.push("Nível não informado");
-    }
-    if (isNaN(dano) || isNaN(defesa)) {
-        errors.push("Dano e defesa devem ser um número");
-    }
-    if (dano > 20 || dano < 0) {
-        errors.push("Dano deve ser entre 0 e 20");
-    }
-    if (defesa > 20 || defesa < 0) {
-        errors.push("Defesa deve ser entre 0 e 20");
-    }
+    // verificações
+
+    verificacoesEncantamento(titulo, descricao, tipoEncanto, dano, defesa, nivel, errors);
 
     if (errors.length > 0) {
         return res.status(400).send({ errors });
@@ -124,7 +110,7 @@ export const updateEncantamento = (req, res) => {
         if (!encantamento) {
             return res.status(404).send({ message: "Encantamento não encontrado" });
         }
-        const updateEncantamento = listEncantamentos.updateEncantamento(id, encantamento);
+        const updateEncantamento = listEncantamentos.updateEncantamento(id, titulo, descricao, tipoEncanto, dano, defesa, nivel);
         return res.status(200).send({ message: "Encantamento atualizado com sucesso", updateEncantamento });
     }
 }

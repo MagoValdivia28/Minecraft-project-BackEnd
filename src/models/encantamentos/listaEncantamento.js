@@ -11,7 +11,7 @@ export class ListaEncantamentos {
         this.encantamentos = this.encantamentos.filter(encantamento => encantamento.id !== id);
     }
 
-    updateEncantamento(id, titulo, descricao, tipoEncanto, dano, defesa, cor) {
+    updateEncantamento(id, titulo, descricao, tipoEncanto, dano, defesa) {
         this.encantamentos = this.encantamentos.map(encantamento => {
             if (encantamento.id === id) {
                 encantamento.titulo = titulo;

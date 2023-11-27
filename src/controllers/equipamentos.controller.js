@@ -1,5 +1,6 @@
 import { Equipamento } from '../models/equipamentos/equipamento.js';
 import { ListaEquipamentos } from '../models/equipamentos/listaEquipamentos.js';
+import { verificacoesEquipamento } from '../components/verifications.js';
 
 // EQUIPAMENTOS
 
@@ -32,35 +33,16 @@ export const getEquipamentoById = (req, res) => {
 export const createEquipamento = (req, res) => {
     const errors = [];
 
+    // Lower Case
+    req.body.nome = req.body.nome.toLowerCase();
+    req.body.descricao = req.body.descricao.toLowerCase();
+    req.body.material = req.body.material.toLowerCase();
+    req.body.tipo = req.body.tipo.toLowerCase();
+    req.body.cor = req.body.cor.toLowerCase();
     const { nome, descricao, material, tipo, dano, defesa, cor } = req.body;
-
-    if (!nome) {
-        errors.push("Nome não informado");
-    }
-    if (!descricao) {
-        errors.push("Descrição não informada");
-    }
-    if (!material) {
-        errors.push("Material não informado");
-    }
-    if (!tipo) {
-        errors.push("Tipo não informado");
-    }
-    if(!dano && !defesa) {
-        errors.push("O valor do dano ou da defesa tem que ser informado");
-    }
-    if (!cor) {
-        errors.push("Cor não informada");
-    }
-    if (isNaN(dano) || isNaN(defesa)) {
-        errors.push("Dano e defesa devem ser um número");
-    }
-    if (dano > 20 || dano < 0) {
-        errors.push("Dano deve ser entre 0 e 20");
-    }
-    if (defesa > 20 || defesa < 0) {
-        errors.push("Defesa deve ser entre 0 e 20");
-    }
+    
+    // verificações
+    verificacoesEquipamento(nome, descricao, material, tipo, dano, defesa, cor, errors);
 
     if (errors.length > 0) {
         return res.status(400).send({ errors });
@@ -130,7 +112,7 @@ export const updateEquipamento = (req, res) => {
         if (!equipamento) {
             return res.status(404).send({ message: "Equipamento não encontrado" });
         }
-        const updateEquipamento = listEquipamentos.updateEquipamento(id, equipamento);
+        const updateEquipamento = listEquipamentos.updateEquipamento(id, nome, descricao, material, tipo, dano, defesa, cor);
         return res.status(200).send({ message: "Equipamento atualizado com sucesso", updateEquipamento });
     }
 }
