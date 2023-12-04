@@ -60,3 +60,21 @@ export const verificacoesEncantamento = (titulo, descricao, tipoEncanto, dano, d
         errors.push("Defesa deve ser entre 0 e 20");
     }
 }
+
+export const verificacoesMembro = (nome, idade, descricao, errors) => {
+    if (!nome) {
+        errors.push("Nome não informado");
+    }
+    if (!idade) {
+        errors.push("Idade não informada");
+    }
+    if (!descricao) {
+        errors.push("Descrição não informada");
+    }
+    if (isNaN(idade)) {
+        errors.push("Idade deve ser um número");
+    }
+    if (idade < 0) {
+        errors.push("Idade deve ser maior que 0");
+    }
+}
