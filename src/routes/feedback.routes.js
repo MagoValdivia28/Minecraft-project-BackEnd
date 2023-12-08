@@ -1,5 +1,5 @@
 import { 
-    deletarFeedback,
+    deleteFeedback,
     atualizarFeedback,
     criarFeedbacks,
     getAllFeedbacks,
@@ -14,6 +14,6 @@ rotasFeedback.get("/", getAllFeedbacks);
 rotasFeedback.get("/:id", getFeedbackById);
 rotasFeedback.post("/", criarFeedbacks);
 rotasFeedback.put("/:id", atualizarFeedback);
-rotasFeedback.delete("/:id", deletarFeedback);
+rotasFeedback.delete("/:id", deleteFeedback);
 
 export default rotasFeedback;

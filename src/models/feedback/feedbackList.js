@@ -1,4 +1,4 @@
-export class feedbackList {
+export class FeedbackList {
     constructor() {
         this.listFeedback = [];
     }
@@ -15,8 +15,11 @@ export class feedbackList {
         return feedback;
     }
     removerFeedback(id) {
-        const feedback = this.listFeedback.find((feedback) => feedback.id === id) || this.atualizarFeedback(id);
-        const index = this.listFeedback.indexOf(feedback);
-        this.listFeedback.splice(index, 1);
+        this.listFeedback = this.listFeedback.filter(feedback => feedback.id !== id);
     }
+
+    getFeedback(id) {
+        return this.feedbacks.find(feedback => feedback.id == id);
+    }
+
 }
