@@ -17,7 +17,7 @@ export const verificacoesEquipamento = (nome, descricao, material, tipo, dano, d
     if (!cor) {
         errors.push("Cor não informada");
     }
-    if (tipo !== "espada" && tipo !== "capacete" && tipo !== "peitoral" && tipo !== "calça" && tipo !== "bota") {
+    if (tipo !== "espada" && tipo !== "capacete" && tipo !== "peitoral" && tipo !== "calca" && tipo !== "bota") {
         errors.push("Tipo deve ser espada, capacete, peitoral, calça ou bota");
     }
     if (isNaN(dano) || isNaN(defesa)) {
@@ -41,7 +41,7 @@ export const verificacoesEncantamento = (titulo, descricao, tipoEncanto, dano, d
     if (!tipoEncanto) {
         errors.push("Tipo de encanto não informado");
     }
-    if (tipoEncanto !== "espada" && tipoEncanto !== "capacete" && tipoEncanto !== "peitoral" && tipoEncanto !== "calça" && tipoEncanto !== "bota") {
+    if (tipoEncanto !== "espada" && tipoEncanto !== "capacete" && tipoEncanto !== "peitoral" && tipoEncanto !== "calca" && tipoEncanto !== "bota") {
         errors.push("Tipo deve ser espada, capacete, peitoral, calça ou bota");
     }
     if(!dano && !defesa) {

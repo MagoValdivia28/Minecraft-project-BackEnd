@@ -33,12 +33,6 @@ export const getEncantamentoById = (req, res) => {
 export const createEncantamento = (req, res) => {
     const errors = [];
 
-    // Lower Case
-
-    req.body.titulo = req.body.titulo.toLowerCase();
-    req.body.descricao = req.body.descricao.toLowerCase();
-    req.body.tipoEncanto = req.body.tipoEncanto.toLowerCase();
-
     const { titulo, descricao, tipoEncanto, dano, defesa, nivel } = req.body;
 
     // verificações
