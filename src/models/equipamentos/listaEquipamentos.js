@@ -34,5 +34,9 @@ export class ListaEquipamentos {
     getAllEquipamentos() {
         return this.equipamentos;
     }
+
+    getFiltredType = (tipo) => {
+        return this.equipamentos.filter(equipamento => equipamento.tipo == tipo);
+    }
     
 }

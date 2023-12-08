@@ -8,11 +8,13 @@ const listEquipamentos = new ListaEquipamentos();
 
 // Buscar Todos os equipamentos
 export const getAllEquipamentos = (req, res) => {
+    const type = req.query.type;
     const equipamentos = listEquipamentos.getAllEquipamentos();
-    if (equipamentos.length > 0) {
-        return res.status(200).send({ equipamentos });
+    if (type) {
+        const equipamentosFiltrados = listEquipamentos.getFiltredType(type);
+        return res.status(200).send( {equipamentosFiltrados} );
     } else {
-        return res.status(200).send({ message: "Não há equipamentos cadastrados" });
+        return res.status(200).send({ equipamentos });
     }
 }
 
@@ -40,7 +42,7 @@ export const createEquipamento = (req, res) => {
     req.body.tipo = req.body.tipo.toLowerCase();
     req.body.cor = req.body.cor.toLowerCase();
     const { nome, descricao, material, tipo, dano, defesa, cor } = req.body;
-    
+
     // verificações
     verificacoesEquipamento(nome, descricao, material, tipo, dano, defesa, cor, errors);
 
@@ -89,7 +91,7 @@ export const updateEquipamento = (req, res) => {
     if (!tipo) {
         errors.push("Tipo não informado");
     }
-    if(!dano && !defesa) {
+    if (!dano && !defesa) {
         errors.push("O valor do dano ou da defesa tem que ser informado");
     }
     if (!cor) {
