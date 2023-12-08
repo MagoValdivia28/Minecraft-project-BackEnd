@@ -40,12 +40,12 @@ export const createMembro = (req, res) => {
 
     // verificações
 
-    verificacoesMembro(nome, idade, descricao, errors);
+    verificacoesMembro(nome, idade, descricao, urlimagem, cargo, errors);
 
     if (errors.length > 0) {
         return res.status(400).send({ errors });
     } else {
-        const membro = new Membro(nome, idade, descricao);
+        const membro = new Membro(nome, idade, descricao, urlimagem, cargo);
         listMembros.addMembro(membro);
         return res.status(201).send({ message: "Membro criado com sucesso" });
     }
@@ -79,6 +79,12 @@ export const updateMembro = (req, res) => {
     if (!descricao) {
         errors.push("Descrição não informada");
     }
+    if (!urlimagem) {
+        errors.push("URL da imagem não informada");
+    }
+    if (!cargo) {
+        errors.push("Cargo não informado");
+    }
     if (!idade) {
         errors.push("Idade não informada");
     }
@@ -96,7 +102,7 @@ export const updateMembro = (req, res) => {
         if (!membro) {
             return res.status(404).send({ message: "Pessoa não encontrada" });
         }
-        const updateMembro = listMembros.updateMembro(id, nome, idade, descricao);
+        const updateMembro = listMembros.updateMembro(id, nome, idade, descricao, urlimagem, cargo);
         return res.status(200).send({ message: "Membro atualizado com sucesso", updateMembro });
     }
 }
