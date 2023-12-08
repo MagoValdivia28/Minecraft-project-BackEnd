@@ -36,7 +36,7 @@ export const createMembro = (req, res) => {
     req.body.nome = req.body.nome.toLowerCase();
     req.body.descricao = req.body.descricao.toLowerCase();
 
-    const { nome, idade, descricao } = req.body;
+    const { nome, idade, descricao, urlimagem, cargo } = req.body;
 
     // verificações
 
@@ -71,7 +71,7 @@ export const updateMembro = (req, res) => {
     const errors = [];
 
     const { id } = req.params;
-    const { nome, idade, descricao } = req.body;
+    const { nome, idade, descricao, urlimagem, cargo } = req.body;
 
     if (!nome) {
         errors.push("Nome não informado");
