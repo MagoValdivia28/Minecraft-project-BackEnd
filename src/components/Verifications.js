@@ -61,7 +61,7 @@ export const verificacoesEncantamento = (titulo, descricao, tipoEncanto, dano, d
     }
 }
 
-export const verificacoesMembro = (nome, idade, descricao, urlimagem, cargo, errors) => {
+export const verificacoesMembro = (nome, idade, descricao, urlimagem, cargo, cor,errors) => {
     if (!nome) {
         errors.push("Nome não informado");
     }
@@ -82,5 +82,11 @@ export const verificacoesMembro = (nome, idade, descricao, urlimagem, cargo, err
     }
     if (idade < 0) {
         errors.push("Idade deve ser maior que 0");
+    }
+    if (cargo !== "guerreiro" && cargo !== "mago" && cargo !== "arqueiro") {
+        errors.push("Cargo deve ser guerreiro, mago ou arqueiro");
+    }
+    if(!cor){
+        errors.push("Cor não informada");
     }
 }
