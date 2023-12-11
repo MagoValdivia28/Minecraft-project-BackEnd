@@ -11,13 +11,13 @@ export const verificacoesEquipamento = (nome, descricao, material, tipo, dano, d
     if (!tipo) {
         errors.push("Tipo não informado");
     }
-    if(!dano && !defesa) {
+    if (!dano && !defesa) {
         errors.push("O valor do dano ou da defesa tem que ser informado");
     }
     if (!cor) {
         errors.push("Cor não informada");
     }
-    if (tipo !== "espada" && tipo !== "capacete" && tipo !== "peitoral" && tipo !== "calça" && tipo !== "bota") {
+    if (tipo !== "espada" && tipo !== "capacete" && tipo !== "peitoral" && tipo !== "calca" && tipo !== "bota") {
         errors.push("Tipo deve ser espada, capacete, peitoral, calça ou bota");
     }
     if (isNaN(dano) || isNaN(defesa)) {
@@ -41,10 +41,10 @@ export const verificacoesEncantamento = (titulo, descricao, tipoEncanto, dano, d
     if (!tipoEncanto) {
         errors.push("Tipo de encanto não informado");
     }
-    if (tipoEncanto !== "espada" && tipoEncanto !== "capacete" && tipoEncanto !== "peitoral" && tipoEncanto !== "calça" && tipoEncanto !== "bota") {
+    if (tipoEncanto !== "espada" && tipoEncanto !== "capacete" && tipoEncanto !== "peitoral" && tipoEncanto !== "calca" && tipoEncanto !== "bota") {
         errors.push("Tipo deve ser espada, capacete, peitoral, calça ou bota");
     }
-    if(!dano && !defesa) {
+    if (!dano && !defesa) {
         errors.push("O valor do dano ou da defesa tem que ser informado");
     }
     if (!nivel) {
@@ -58,5 +58,35 @@ export const verificacoesEncantamento = (titulo, descricao, tipoEncanto, dano, d
     }
     if (defesa > 20 || defesa < 0) {
         errors.push("Defesa deve ser entre 0 e 20");
+    }
+}
+
+export const verificacoesMembro = (nome, idade, descricao, urlimagem, cargo, backgroundcor, errors) => {
+    if (!nome) {
+        errors.push("Nome não informado");
+    }
+    if (!idade) {
+        errors.push("Idade não informada");
+    }
+    if (!descricao) {
+        errors.push("Descrição não informada");
+    }
+    if (!urlimagem) {
+        errors.push("URL da imagem não informada");
+    }
+    if (!cargo) {
+        errors.push("Cargo não informado");
+    }
+    if (isNaN(idade)) {
+        errors.push("Idade deve ser um número");
+    }
+    if (idade < 0) {
+        errors.push("Idade deve ser maior que 0");
+    }
+    if (!cargo) {
+        errors.push("Cargo não informado");
+    }
+    if (!backgroundcor) {
+        errors.push("backgroundcor não informada");
     }
 }
