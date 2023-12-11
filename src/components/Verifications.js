@@ -61,7 +61,7 @@ export const verificacoesEncantamento = (titulo, descricao, tipoEncanto, dano, d
     }
 }
 
-export const verificacoesMembro = (nome, idade, descricao, urlimagem, cargo, backgroundcor, errors) => {
+export const verificacoesMembro = (nome, idade, descricao, urlimagem, cargo, cor, errors) => {
     if (!nome) {
         errors.push("Nome não informado");
     }
@@ -86,7 +86,7 @@ export const verificacoesMembro = (nome, idade, descricao, urlimagem, cargo, bac
     if (!cargo) {
         errors.push("Cargo não informado");
     }
-    if (!backgroundcor) {
-        errors.push("backgroundcor não informada");
+    if (!cor) {
+        errors.push("Cor não informada");
     }
 }
