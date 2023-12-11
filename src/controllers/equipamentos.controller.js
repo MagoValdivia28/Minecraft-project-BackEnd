@@ -8,14 +8,10 @@ const listEquipamentos = new ListaEquipamentos();
 
 // Buscar Todos os equipamentos
 export const getAllEquipamentos = (req, res) => {
+    const name = req.query.name;
     const type = req.query.type;
-    const equipamentos = listEquipamentos.getAllEquipamentos();
-    if (type) {
-        const equipamentosFiltrados = listEquipamentos.getFiltredType(type);
-        return res.status(200).send( {equipamentosFiltrados} );
-    } else {
-        return res.status(200).send({ equipamentos });
-    }
+    const equipamentos = listEquipamentos.getFiltered(name, type);
+    return res.status(200).send({ equipamentos });
 }
 
 // Buscar equipamento por ID

@@ -35,8 +35,18 @@ export class ListaEquipamentos {
         return this.equipamentos;
     }
 
-    getFiltredType = (tipo) => {
-        return this.equipamentos.filter(equipamento => equipamento.tipo == tipo);
+    getFiltered (nome, tipo) {
+        if (nome && tipo) {
+            return this.equipamentos.filter(equipamento => equipamento.nome === nome && equipamento.tipo === tipo);
+        } else if (nome) {
+            return this.equipamentos.filter(equipamento => equipamento.nome === nome);
+        } else if (tipo) {
+            return this.equipamentos.filter(equipamento => equipamento.tipo === tipo);
+        } else {
+            return this.equipamentos;
+        }
     }
+
+
     
 }
