@@ -6,9 +6,7 @@ import rotasFeedback from  "./feedback.routes.js"
 const routes = Router();
 
 routes.use('/equipamentos', equipamentosRoutes);
-routes.use('/encantamentos/id', encamentosRoutes);
 routes.use('/feedback', rotasFeedback);
-routes.use('/feedback/id', rotasFeedback);
 
 routes.get('/', (req, res) => {
     return res.status(200).send({message: 'Server on dmss🚗'});
