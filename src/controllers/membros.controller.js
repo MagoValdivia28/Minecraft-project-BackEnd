@@ -37,19 +37,19 @@ export const createMembro = (req, res) => {
     req.body.descricao = req.body.descricao.toLowerCase();
     req.body.urlimagem = req.body.urlimagem.toLowerCase();
     req.body.cargo = req.body.cargo.toLowerCase();
-    req.body.cor = req.body.cor.toLowerCase();
+    req.body.backgroundcor = req.body.backgroundcor.toLowerCase();
 
 
-    const { nome, idade, descricao, urlimagem, cargo, cor } = req.body;
+    const { nome, idade, descricao, urlimagem, cargo, backgroundcor } = req.body;
 
     // verificações
 
-    verificacoesMembro(nome, idade, descricao, urlimagem, cargo, cor, errors);
+    verificacoesMembro(nome, idade, descricao, urlimagem, cargo, backgroundcor, errors);
 
     if (errors.length > 0) {
         return res.status(400).send({ errors });
     } else {
-        const membro = new Membro(nome, idade, descricao, urlimagem, cargo, cor);
+        const membro = new Membro(nome, idade, descricao, urlimagem, cargo, backgroundcor);
         listMembros.addMembro(membro);
         return res.status(201).send({ message: "Membro criado com sucesso" });
     }
@@ -75,7 +75,7 @@ export const updateMembro = (req, res) => {
     const errors = [];
 
     const { id } = req.params;
-    const { nome, idade, descricao, urlimagem, cargo, cor } = req.body;
+    const { nome, idade, descricao, urlimagem, cargo, backgroundcor } = req.body;
 
     if (!nome) {
         errors.push("Nome não informado");
@@ -89,8 +89,8 @@ export const updateMembro = (req, res) => {
     if (!cargo) {
         errors.push("Cargo não informado");
     }
-    if (!cor) {
-        errors.push("Cor não informada");
+    if (!backgroundcor) {
+        errors.push("backgroundcor não informada");
     }
     if (!idade) {
         errors.push("Idade não informada");
@@ -109,7 +109,7 @@ export const updateMembro = (req, res) => {
         if (!membro) {
             return res.status(404).send({ message: "Pessoa não encontrada" });
         }
-        const updateMembro = listMembros.updateMembro(id, nome, idade, descricao, urlimagem, cargo, cor);
+        const updateMembro = listMembros.updateMembro(id, nome, idade, descricao, urlimagem, cargo, backgroundcor);
         return res.status(200).send({ message: "Membro atualizado com sucesso", updateMembro });
     }
 }
