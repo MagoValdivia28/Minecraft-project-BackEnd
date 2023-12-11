@@ -11,7 +11,7 @@ export const verificacoesEquipamento = (nome, descricao, material, tipo, dano, d
     if (!tipo) {
         errors.push("Tipo não informado");
     }
-    if(!dano && !defesa) {
+    if (!dano && !defesa) {
         errors.push("O valor do dano ou da defesa tem que ser informado");
     }
     if (!cor) {
@@ -44,7 +44,7 @@ export const verificacoesEncantamento = (titulo, descricao, tipoEncanto, dano, d
     if (tipoEncanto !== "espada" && tipoEncanto !== "capacete" && tipoEncanto !== "peitoral" && tipoEncanto !== "calca" && tipoEncanto !== "bota") {
         errors.push("Tipo deve ser espada, capacete, peitoral, calça ou bota");
     }
-    if(!dano && !defesa) {
+    if (!dano && !defesa) {
         errors.push("O valor do dano ou da defesa tem que ser informado");
     }
     if (!nivel) {
@@ -61,7 +61,7 @@ export const verificacoesEncantamento = (titulo, descricao, tipoEncanto, dano, d
     }
 }
 
-export const verificacoesMembro = (nome, idade, descricao, urlimagem, cargo, errors) => {
+export const verificacoesMembro = (nome, idade, descricao, urlimagem, cargo, backgroundcor, errors) => {
     if (!nome) {
         errors.push("Nome não informado");
     }
@@ -82,5 +82,11 @@ export const verificacoesMembro = (nome, idade, descricao, urlimagem, cargo, err
     }
     if (idade < 0) {
         errors.push("Idade deve ser maior que 0");
+    }
+    if (!cargo) {
+        errors.push("Cargo não informado");
+    }
+    if (!backgroundcor) {
+        errors.push("backgroundcor não informada");
     }
 }
