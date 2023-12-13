@@ -11,14 +11,14 @@ export class ListaMembros {
         this.membros = this.membros.filter(membro => membro.id !== id);
     }
 
-    updateMembro(id, nome, idade, descricao, urlimagem, cargo, backgroundcor) {
+    updateMembro(id, nome, idade, descricao, cargo, urlimagem, backgroundcor) {
         this.membros = this.membros.map(membro => {
             if (membro.id === id) {
                 membro.nome = nome;
                 membro.idade = idade;
                 membro.descricao = descricao;
-                membro.urlimagem = urlimagem;
                 membro.cargo = cargo;
+                membro.urlimagem = urlimagem;
                 membro.backgroundcor = backgroundcor;
             }
             return membro;

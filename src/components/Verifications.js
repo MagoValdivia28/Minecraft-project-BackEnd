@@ -61,21 +61,12 @@ export const verificacoesEncantamento = (titulo, descricao, tipoEncanto, dano, d
     }
 }
 
-export const verificacoesMembro = (nome, idade, descricao, urlimagem, cargo, backgroundcor, errors) => {
+export const verificacoesMembro = (nome, idade, descricao, cargo, urlimagem, backgroundcor, errors) => {
     if (!nome) {
         errors.push("Nome não informado");
     }
     if (!idade) {
         errors.push("Idade não informada");
-    }
-    if (!descricao) {
-        errors.push("Descrição não informada");
-    }
-    if (!urlimagem) {
-        errors.push("URL da imagem não informada");
-    }
-    if (!cargo) {
-        errors.push("Cargo não informado");
     }
     if (isNaN(idade)) {
         errors.push("Idade deve ser um número");
@@ -83,8 +74,14 @@ export const verificacoesMembro = (nome, idade, descricao, urlimagem, cargo, bac
     if (idade < 0) {
         errors.push("Idade deve ser maior que 0");
     }
+    if (!descricao) {
+        errors.push("Descrição não informada");
+    }
     if (!cargo) {
         errors.push("Cargo não informado");
+    }
+    if (!urlimagem) {
+        errors.push("URL da imagem não informada");
     }
     if (!backgroundcor) {
         errors.push("backgroundcor não informada");

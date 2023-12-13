@@ -35,21 +35,21 @@ export const createMembro = (req, res) => {
 
     req.body.nome = req.body.nome.toLowerCase();
     req.body.descricao = req.body.descricao.toLowerCase();
-    req.body.urlimagem = req.body.urlimagem.toLowerCase();
     req.body.cargo = req.body.cargo.toLowerCase();
+    req.body.urlimagem = req.body.urlimagem.toLowerCase();
     req.body.backgroundcor = req.body.backgroundcor.toLowerCase();
 
 
-    const { nome, idade, descricao, urlimagem, cargo, backgroundcor } = req.body;
+    const { nome, idade, descricao, cargo, urlimagem, backgroundcor } = req.body;
 
     // verificações
 
-    verificacoesMembro(nome, idade, descricao, urlimagem, cargo, backgroundcor, errors);
+    verificacoesMembro(nome, idade, descricao, cargo, urlimagem, backgroundcor, errors);
 
     if (errors.length > 0) {
         return res.status(400).send({ errors });
     } else {
-        const membro = new Membro(nome, idade, descricao, urlimagem, cargo, backgroundcor);
+        const membro = new Membro(nome, idade, descricao, cargo, urlimagem, backgroundcor);
         listMembros.addMembro(membro);
         return res.status(201).send({ message: "Membro criado com sucesso" });
     }
@@ -75,7 +75,7 @@ export const updateMembro = (req, res) => {
     const errors = [];
 
     const { id } = req.params;
-    const { nome, idade, descricao, urlimagem, cargo, backgroundcor } = req.body;
+    const { nome, idade, descricao, cargo, urlimagem, backgroundcor } = req.body;
 
     if (!nome) {
         errors.push("Nome não informado");
@@ -83,11 +83,11 @@ export const updateMembro = (req, res) => {
     if (!descricao) {
         errors.push("Descrição não informada");
     }
-    if (!urlimagem) {
-        errors.push("URL da imagem não informada");
-    }
     if (!cargo) {
         errors.push("Cargo não informado");
+    }
+    if (!urlimagem) {
+        errors.push("URL da imagem não informada");
     }
     if (!backgroundcor) {
         errors.push("backgroundcor não informada");
