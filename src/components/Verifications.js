@@ -61,7 +61,7 @@ export const verificacoesEncantamento = (titulo, descricao, tipoEncanto, dano, d
     }
 }
 
-export const verificacoesMembro = (nome, idade, descricao, urlimagem, cargo, errors) => {
+export const verificacoesMembro = (nome, idade, descricao, urlimagem, cargo, backgroundcor, errors) => {
     if (!nome) {
         errors.push("Nome não informado");
     }
@@ -126,4 +126,3 @@ export const verificacoesMob = (nome, descricao, tipo, dano, defesa, img, errors
 
 
 }
-
