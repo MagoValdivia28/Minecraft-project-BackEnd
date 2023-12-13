@@ -1,6 +1,6 @@
 import { Encantamento } from '../models/encantamentos/encantamento.js';
 import { ListaEncantamentos } from '../models/encantamentos/listaEncantamento.js';
-import { verificacoesEncantamento } from '../components/verifications.js';
+import { verificacoesEncantamento } from '../components/Verifications.js';
 
 // ENCANTAMENTOS
 

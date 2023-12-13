@@ -1,6 +1,6 @@
 import { Membro } from '../models/membros/membro.js';
 import { ListaMembros } from '../models/membros/listaMembros.js';
-import { verificacoesMembro } from '../components/verifications.js';
+import { verificacoesMembro } from '../components/Verifications.js';
 
 // MEMBROS
 
