@@ -37,7 +37,6 @@ export const createMembro = (req, res) => {
     req.body.descricao = req.body.descricao.toLowerCase();
     req.body.cargo = req.body.cargo.toLowerCase();
     req.body.urlimagem = req.body.urlimagem.toLowerCase();
-    req.body.backgroundcor = req.body.backgroundcor.toLowerCase();
 
 
     const { nome, idade, descricao, cargo, urlimagem, backgroundcor } = req.body;
