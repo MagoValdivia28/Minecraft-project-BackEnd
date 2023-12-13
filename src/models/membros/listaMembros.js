@@ -11,7 +11,7 @@ export class ListaMembros {
         this.membros = this.membros.filter(membro => membro.id !== id);
     }
 
-    updateMembro(id, nome, idade, descricao, cargo, urlimagem, backgroundcor) {
+    updateMembro(id, nome, idade, descricao, cargo, urlimagem) {
         this.membros = this.membros.map(membro => {
             if (membro.id === id) {
                 membro.nome = nome;
@@ -19,7 +19,6 @@ export class ListaMembros {
                 membro.descricao = descricao;
                 membro.cargo = cargo;
                 membro.urlimagem = urlimagem;
-                membro.backgroundcor = backgroundcor;
             }
             return membro;
         });

@@ -39,16 +39,16 @@ export const createMembro = (req, res) => {
     req.body.urlimagem = req.body.urlimagem.toLowerCase();
 
 
-    const { nome, idade, descricao, cargo, urlimagem, backgroundcor } = req.body;
+    const { nome, idade, descricao, cargo, urlimagem } = req.body;
 
     // verificações
 
-    verificacoesMembro(nome, idade, descricao, cargo, urlimagem, backgroundcor, errors);
+    verificacoesMembro(nome, idade, descricao, cargo, urlimagem, errors);
 
     if (errors.length > 0) {
         return res.status(400).send({ errors });
     } else {
-        const membro = new Membro(nome, idade, descricao, cargo, urlimagem, backgroundcor);
+        const membro = new Membro(nome, idade, descricao, cargo, urlimagem);
         listMembros.addMembro(membro);
         return res.status(201).send({ message: "Membro criado com sucesso" });
     }
@@ -74,7 +74,7 @@ export const updateMembro = (req, res) => {
     const errors = [];
 
     const { id } = req.params;
-    const { nome, idade, descricao, cargo, urlimagem, backgroundcor } = req.body;
+    const { nome, idade, descricao, cargo, urlimagem } = req.body;
 
     if (!nome) {
         errors.push("Nome não informado");
@@ -87,9 +87,6 @@ export const updateMembro = (req, res) => {
     }
     if (!urlimagem) {
         errors.push("URL da imagem não informada");
-    }
-    if (!backgroundcor) {
-        errors.push("backgroundcor não informada");
     }
     if (!idade) {
         errors.push("Idade não informada");
@@ -108,7 +105,7 @@ export const updateMembro = (req, res) => {
         if (!membro) {
             return res.status(404).send({ message: "Pessoa não encontrada" });
         }
-        const updateMembro = listMembros.updateMembro(id, nome, idade, descricao, urlimagem, cargo, backgroundcor);
+        const updateMembro = listMembros.updateMembro(id, nome, idade, descricao, urlimagem, cargo);
         return res.status(200).send({ message: "Membro atualizado com sucesso", updateMembro });
     }
 }
