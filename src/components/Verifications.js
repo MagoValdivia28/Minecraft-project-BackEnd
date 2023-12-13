@@ -87,6 +87,7 @@ export const verificacoesMembro = (nome, idade, descricao, cargo, urlimagem, bac
         errors.push("backgroundcor não informada");
     }
 }
+
 export const verificacoesMob = (nome, descricao, tipo, dano, defesa, img, errors) => {
     if (!nome) {
         errors.push("Nome não informado");
