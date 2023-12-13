@@ -1,6 +1,6 @@
 import { Mob } from '../models/mobs/mob.js';
 import { ListaMobs } from '../models/mobs/listaMobs.js';
-import { verificacoesMob } from '../components/verifications.js';
+import { verificacoesMob } from '../components/Verifications.js';
 
 // ENCANTAMENTOS
 
