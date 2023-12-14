@@ -8,12 +8,10 @@ const listMobs = new ListaMobs();
 
 // Buscar todos os encantamentos
 export const getAllMobs = (req, res) => {
-    const mobs = listMobs.getAllMobs();
-    if (mobs.length > 0) {
-        return res.status(200).send({ mobs });
-    } else {
-        return res.status(200).send({ message: "Não há mobs cadastrados" });
-    }
+    const name = req.query.name;
+    const type = req.query.type;
+    const mobs = listMobs.getFiltered(name, type);
+    return res.status(200).send({ mobs });
 }
 
 // Buscar encantamento por ID

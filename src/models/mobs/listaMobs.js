@@ -34,8 +34,16 @@ export class ListaMobs {
         return this.mobs;
     }
 
-    getFiltredType = (tipo) => {
-        return this.mobs.filter(mob => mob.tipo == tipo);
+    getFiltered(nome, tipo) {
+        if (nome && tipo) {
+            return this.mobs.filter(mob => mob.nome === nome && mob.tipo === tipo);
+        } else if (nome) {
+            return this.mobs.filter(mob => mob.nome === nome);
+        } else if (tipo) {
+            return this.mobs.filter(mob => mob.tipo === tipo);
+        } else {
+            return this.mobs;
+        }
     }
-    
+
 }
