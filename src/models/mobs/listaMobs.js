@@ -20,7 +20,6 @@ export class ListaMobs {
                 mob.dano = dano;
                 mob.defesa = defesa;
                 mob.img = img;
-               
             }
             return mob;
         });

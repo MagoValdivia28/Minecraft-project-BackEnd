@@ -70,7 +70,7 @@ export const updateMob = (req, res) => {
     const errors = [];
 
     const { id } = req.params;
-    const { nome, descricao, dano, defesa,  } = req.body;
+    const { nome, descricao, tipo, dano, defesa, img } = req.body;
 
     if (!nome) {
         errors.push("Nome não informado");
@@ -98,7 +98,7 @@ export const updateMob = (req, res) => {
         if (!mob) {
             return res.status(404).send({ message: "Mob não encontrado" });
         }
-        const updateMob = listMobs.updateMob(id, descricao, dano, defesa);
+        const updateMob = listMobs.updateMob(id, nome, descricao, tipo, dano, defesa, img);
         return res.status(200).send({ message: "Mob atualizado com sucesso", updateMob });
     }
 }
