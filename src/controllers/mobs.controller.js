@@ -1,10 +1,17 @@
 import { Mob } from '../models/mobs/mob.js';
 import { ListaMobs } from '../models/mobs/listaMobs.js';
 import { verificacoesMob } from '../components/Verifications.js';
+import mobsPredefinidos from '../data/mobs.js';
 
 // ENCANTAMENTOS
 
 const listMobs = new ListaMobs();
+
+mobsPredefinidos.map(mob => {
+    const mobModel = new Mob(mob.nome, mob.descricao, mob.tipo, mob.dano, mob.defesa, mob.img);
+    listMobs.addMob(mobModel);
+    listMobs.getAllMobs();
+});
 
 // Buscar todos os encantamentos
 export const getAllMobs = (req, res) => {
@@ -35,12 +42,12 @@ export const createMob = (req, res) => {
 
     // verificações
 
-    verificacoesMob(nome , descricao, tipo ,dano, defesa, img, errors);
+    verificacoesMob(nome, descricao, tipo, dano, defesa, img, errors);
 
     if (errors.length > 0) {
         return res.status(400).send({ errors });
     } else {
-        const mob = new Mob(nome ,descricao, tipo, dano, defesa, img);
+        const mob = new Mob(nome, descricao, tipo, dano, defesa, img);
         listMobs.addMob(mob);
         return res.status(201).send({ message: "Seu mob foi criado com sucesso" });
     }
@@ -76,7 +83,7 @@ export const updateMob = (req, res) => {
     if (!descricao) {
         errors.push("Descrição não informada");
     }
-    if(!dano && !defesa) {
+    if (!dano && !defesa) {
         errors.push("O valor do dano ou da defesa tem que ser informado");
     }
     if (isNaN(dano) || isNaN(defesa)) {
