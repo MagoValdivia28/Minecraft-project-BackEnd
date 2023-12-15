@@ -133,7 +133,53 @@ const equipamentosPredefinidos = [
         dano: 5,
         defesa: 0,
         cor: "#68422A"
+    },
+    {
+        nome: "Capacete de ouro",
+        descricao: "Um capacete resistente feito de ouro.",
+        material: "Ouro",
+        tipo: "capacete",
+        dano: 0,
+        defesa: 3,
+        cor: "#F2D13A"
+    },
+    {
+        nome: "Peitoral de ouro",
+        descricao: "Um peitoral resistente feito de ouro.",
+        material: "Ouro",
+        tipo: "peitoral",
+        dano: 0,
+        defesa: 4,
+        cor: "#F2D13A"
+    },
+    {
+        nome: "Calça de ouro",
+        descricao: "Uma calça resistente feita de ouro.",
+        material: "Ouro",
+        tipo: "calca",
+        dano: 0,
+        defesa: 3,
+        cor: "#F2D13A"
+    },
+    {
+        nome: "Bota de ouro",
+        descricao: "Uma bota resistente feita de ouro.",
+        material: "Ouro",
+        tipo: "bota",
+        dano: 0,
+        defesa: 2,
+        cor: "#F2D13A"
+    },
+    {
+        nome: "Espada de ouro",
+        descricao: "Uma espada resistente feita de ouro.",
+        material: "Ouro",
+        tipo: "espada",
+        dano: 8,
+        defesa: 0,
+        cor: "#F2D13A"
     }
+
 ]
 
 export default equipamentosPredefinidos
