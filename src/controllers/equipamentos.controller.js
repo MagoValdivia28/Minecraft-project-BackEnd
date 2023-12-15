@@ -1,10 +1,19 @@
 import { Equipamento } from '../models/equipamentos/equipamento.js';
 import { ListaEquipamentos } from '../models/equipamentos/listaEquipamentos.js';
 import { verificacoesEquipamento } from '../components/Verifications.js';
+import equipamentosPredefinidos from '../data/equipamentos.js';
 
 // EQUIPAMENTOS
 
 const listEquipamentos = new ListaEquipamentos();
+
+// equipamentos pre definifdos
+
+equipamentosPredefinidos.map(equipamento => {
+    const equipamentoModel = new Equipamento(equipamento.nome, equipamento.descricao, equipamento.material, equipamento.tipo, equipamento.dano, equipamento.defesa, equipamento.cor);
+    listEquipamentos.addEquipamento(equipamentoModel);
+    listEquipamentos.getAllEquipamentos();
+}); 
 
 // Buscar Todos os equipamentos
 export const getAllEquipamentos = (req, res) => {
